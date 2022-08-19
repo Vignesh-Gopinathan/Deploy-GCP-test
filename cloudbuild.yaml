@@ -8,17 +8,11 @@ steps:
   args: ['push', 'gcr.io/$PROJECT_ID/app:v1']
   id: 'push-docker-image'
   waitFor: ['build-docker-image']
-- name: 'gcr.io/cloud-builders/gcloud'
+- name: 'gcr.io/cloud-builders/gke-deploy'
   args:
-  - 'run'
-  - 'deploy'
-  - 'myawesomeapp'
-  - '--image'
-  - 'gcr.io/$PROJECT_ID/app:v1'
-  - '--region'
-  - 'us-east4'
-  - '--platform'
-  - 'managed'
-  - '--allow-unauthenticated'
+  - run
+  - --filename=k8/
+  - --location=us-west1-b
+  - --cluster=project-kube
   id: 'deploy-container'
   waitFor: ['push-docker-image']
