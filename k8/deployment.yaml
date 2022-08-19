@@ -16,6 +16,6 @@ spec:
     spec:
       containers:
       - name: translator-app
-        image: gcr.io/$PROJECT_ID/app:v1
+        image: gcr.io/applied-theme-359018/app:v1
         ports:
         - containerPort: 8080
