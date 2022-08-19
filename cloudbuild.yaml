@@ -11,7 +11,8 @@ steps:
 - name: 'gcr.io/cloud-builders/gcloud'
   args:
   - 'deploy'
-  - '--image'
+  - 'test-app'
+  - '--image-url'
   - 'gcr.io/$PROJECT_ID/app:v1'
   id: 'deploy-container'
   waitFor: ['push-docker-image']
